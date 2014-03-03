@@ -1,20 +1,32 @@
-%section#hero
+%section#section-one{"data-speed" => "10", "data-type" => "background"}
+  = render "nav"
   .container
     .row
-      .well-custom.col-xs-12.col-sm-12.col-md-5.col-lg-5
-        %h1#welcome-title a better hire
-        %hr.thick-line
-        %h2#welcome-subtitle Let us help you hire
-        %p 
-          %em A simple and easy to use inteview application that can help your hiring process.
-      .sign-up.well-custom.col-xs-12.col-sm-12.col-md-5.col-lg-5.col-lg-offset-2.col-md-offset-2
-        =# render "form"
-      .div
-        link_to "sample", "/layouts/Narrow Jumbotron Template for Bootstrap"
+      .spacer50
+      .col-xs-12
+        %h1#welcome-title a better hire.
+        %hr
+        %h2#welcome-subtitle helping you hire your next super star
+        .spacer25
+        %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer luctus velit sed nisl auctor, ac vulputate quam ullamcorper. Donec tincidunt ac neque quis auctor. Quisque erat tortor, aliquet ac massa aliquet, congue fermentum nisi. Quisque sapien erat, sodales nec nisi elementum.
+        .spacer25
+        .col-xs-2.col-xs-offset-6
+        %a.btn.btn-lg.btn-primary{href: "#"} Sign Up
+    .row
 
-%section#section-two
+%section#section-two{"data-speed" => "10", "data-type" => "background"}
   .container
     .row
-      .well-custom.col-xs-12.col-sm-12.col-md-8.col-lg-8
-        %h1 Examples Templates to get you started.
+      .spacer50
+      .col-xs-12
+        %h2 Examples Templates to get you started.
         %p We are here to help you make the right decision for your next hire buy giving you the tools to make it easier.
+  = render 'images'
+  .container
+    .row
+      .spacer50
+      .spacer50
+      .well.col-xs-10.col-xs-offset-1.col-sm-offset-1.col-sm-7.col-md-7.col-md-offset-3
+        = render 'sign_up'
+
+

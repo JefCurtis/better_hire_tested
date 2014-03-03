@@ -7,7 +7,6 @@
     = csrf_meta_tags 
 
   %body
-
-    = render "layouts/navbar"
+    = render 'layouts/navbar' unless @disable_nav
     = render "layouts/flash"    
     =yield 

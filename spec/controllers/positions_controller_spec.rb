@@ -47,6 +47,14 @@ describe PositionsController do
         expect(flash[:notice]).to eq('Web Designer position has been created!')
       end
     end
+
+    describe "when the position name is blank" do
+
+      it "should set a flash message" do
+        post :create, {position: {name: ""}}
+        expect(flash[:alert]).to eq("There was an error when creating your job position")
+      end
+    end
   end
   
   describe "GET #show" do
@@ -62,6 +70,15 @@ describe PositionsController do
       get :show, id: position.id
       expect(assigns(:position)).to eq(position)
     end
+
+      it "should display question for position" do
+      question = create :question
+      position = create :position
+      position.questions << question
+      get :show,  id: position.id
+      expect(response).to render_template('show')
+    end
+
   end
 
   describe "GET #edit" do

@@ -1,0 +1,10 @@
+.container
+  %ul
+  - @candidates.each do |candidate|
+    %li
+      = link_to "#{candidate.first_name} #{candidate.last_name}", candidate
+      = link_to "edit", edit_candidate_path(candidate)
+      = link_to "delete", candidate_path(candidate), method: :delete, data: { confirm: 'Are you sure?' }
+      %br 
+  
+  = link_to "Add a candidate", new_candidate_path

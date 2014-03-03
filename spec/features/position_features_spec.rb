@@ -24,7 +24,7 @@ feature :position do
     fill_in "Name", with: ""
     fill_in "Description", with: "Someone with a little sense of design!"
     click_on "Create"
-    expect(page).to have_text("There was an error when creating your job position!")
+    expect(page).to have_text("There was an error when creating your job position")
   end
 
   scenario "A user goes to the show page and sees the position name" do
@@ -52,7 +52,6 @@ feature :position do
   scenario "A user can delete a position", js: true do 
     position = create :position
     visit edit_position_path(position)
-    # click_on "Edit"
     click_on "Delete"
     page.driver.browser.accept_js_confirms
     expect(page).to have_text("Your job position has been deleted.")

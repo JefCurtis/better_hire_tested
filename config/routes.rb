@@ -5,6 +5,7 @@ BetterHireTdd::Application.routes.draw do
   resources :positions do
     resources :questions, except: [:index, :show]
   end
+  resources :candidates
   get "testing" => 'welcome#test'
   root "welcome#index"
 

@@ -1,36 +1,124 @@
-@import url(http://fonts.googleapis.com/css?family=Condiment);
 @import url(http://fonts.googleapis.com/css?family=Prociono);
+@import url(http://fonts.googleapis.com/css?family=Advent+Pro:400,200);
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,100);
 
-$brand-primary: purple;
-$font-family-sans-serif:  "Condiment", Helvetica, Arial, sans-serif;
+$brand-primary: #ff8b43; //orange
+
+$font-family-sans-serif: "Roboto", Helvetica, Arial, sans-serif;
+$headings-font-weight: 100;
 $font-family-serif: 'Prociono', "Times New Roman", Times, serif;
 $font-size-base: 16px;
-$font-size-base: ($font-size-base * 1.15);
-$input-border-radius: 10px;
-// $navbar-inverse-bg: #cb0d0f;
-// $navbar-inverse-link-color: black;
+$font-size-h1: floor($font-size-base * 4);
 
+$input-border-radius: 1px;
+$navbar-inverse-bg: #55A572; //greeen
+$primaryButtonBackground: #FF8B43;  //orange
+$navbar-inverse-link-color: black;
+$section-one-bg: #354f70; //blue
+$secondary-color: #E84347;
+
+$border-radius-base: 1px;
+$border-radius-large: 1px;
 
 
 
 @import 'bootstrap';
-// .btn {
-//   @include button-size(15px, 20px, $font-size-base, $line-height-base, 1px); 
-// }
 
-.btn-codecore {
-  @include button-variant(black, #cb0d0f, $btn-default-border);
+// body { padding-top: 100px; }
+.btn-clear {
+  @extend .btn;
+  @include button-variant(#fff, #55A572, #fff);
+  border: 1px solid white;
+  text-transform: lowercase;
+  // &:hover {
+  // text-decoration: none;
+
+  // }
 }
-
-.cool {
-  @include alert-variant(purple, black, white);
-}
-
 .gradient-bg {
   @include gradient-horizontal($start-color: #cb0d0f, $end-color: lighten(yellow, 30%), $start-percent: 0%, $end-percent: 100%);
 }
 
-body { padding-top: 100px; }//for navbar
+body, html {
+  height : 100%;
+}
+
+section#section-one {
+  background: rgba(53, 79, 112, 1) 50% 0 repeat fixed; min-height: 800px;
+  color: #fff;
+  border-bottom: 5px solid #fff;
+  p {
+    @media(max-width: 767px) {
+    padding-bottom: 5px;
+    }
+  }
+  hr {
+    width: 75%;
+  }
+  
+  h2 {
+    text-align: center;
+  }
+  h1 {
+    text-align: center;
+    text-transform: capitalize;
+    font-size: floor($font-size-base * 6);
+    
+    @media(max-width:767px) {
+      padding-top: 0px;
+    }
+  }
+  nav {
+    background: transparent;
+    border: none;
+    height: 50px;
+
+    .btn-clear {
+      margin-top: 10px;
+      margin-right: 10px;
+      @include button-variant(#fff, $section-one-bg, #fff);
+      border: none;
+
+      // background-color: $section-one-bg;
+      // color: white;
+    }
+  }
+}
+section#section-two {
+  background: #55A572 50% 0 no-repeat; min-height: 800px;
+  color: #fff;
+  text-align: center;
+  h2 {
+    text-align: center;
+    text-transform: capitalize;
+    font-size: floor($font-size-base * 3);
+    }
+  .well {
+    border-radius: 3px;
+    background-color: $secondary-color;
+    border: none;
+  }
+  .form-group {
+    margin-bottom: 10px;
+    margin-top: 10px;
+  }  
+}
+
+.spacer50 {
+  padding-top: 50px;
+}
+.spacer25 { 
+  padding-top: 25px;
+}
+.image-wrapper {
+  @extend .img-responsive;
+  @extend .img-thumbnail;
+}
+.center {
+  text-align: center;
+}
+
+
 
 // // html, body, section { //used for full screen sections
 // //     height: 100%;

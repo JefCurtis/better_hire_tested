@@ -1,0 +1,19 @@
+=form_for @candidate do |f|
+  =f.label :first_name, "First Name"
+  =f.text_field :first_name
+  %br
+  =f.label :last_name, "Last Name"
+  =f.text_field :last_name
+  %br
+  =f.label :email
+  =f.text_field :email
+  %br
+  =f.label :address
+  =f.text_field :address
+  %br
+  =f.label :phone
+  =f.text_field :phone
+  %br
+  =f.submit
+  %button
+    = link_to "go back", request.referer

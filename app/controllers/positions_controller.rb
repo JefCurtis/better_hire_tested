@@ -14,12 +14,15 @@ class PositionsController < ApplicationController
     if @position.save
       redirect_to @position, notice: "#{@position.name} position has been created!"
     else
-      flash.now[:alert]  = "There was an error when creating your job position!"
+      flash.now[:alert]  = "There was an error when creating your job position"
       render :new
     end
   end
 
   def show
+    # @question = @position.questions.new
+    # @question.save
+
   end
 
   def edit
@@ -49,5 +52,7 @@ class PositionsController < ApplicationController
   def find_position
     @position = Position.find(params[:id])
   end
+
+
 
 end

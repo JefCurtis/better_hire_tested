@@ -1,0 +1,12 @@
+.container
+  %h3
+    = "#{@candidate.first_name} #{@candidate.last_name}"
+  %p
+    = "Email: #{@candidate.email}"
+  %p
+    = "Phone: #{@candidate.phone}"
+  %p
+    = "Address: #{@candidate.address}"
+  %p
+    = link_to "edit", edit_candidate_path(@candidate)
+    = link_to "delete", candidate_path(@candidate), method: :delete, data: { confirm: "Are you sure?" } 

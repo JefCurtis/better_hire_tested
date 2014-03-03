@@ -1,0 +1,18 @@
+%nav.navbar.navbar-default{role: "navigation"}
+  .container-fluid
+    %ul.nav.navbar-nav.navbar-right
+      -if user_signed_in? 
+        %li
+          = link_to 'Logout', destroy_user_session_path, method: :delete, class: "btn btn-clear"
+      - else
+        %li#sign-in
+          = link_to 'Login', new_user_session_path, class: "btn-clear btn"
+      
+      %li#hidden-field{style: "max-height: 50px; white-space: nowrap;"}
+        .navbar-form.navbar-right
+          .form-group
+            = form_for User.new, url: user_session_path, class: "form-horizontal" do |f|
+              = devise_error_messages!        
+              = f.email_field :email, placeholder: "email", class: 'form-control'
+              = f.password_field :password, placeholder: "password", class: 'form-control'
+              = f.submit "Sign in", class: 'btn btn-primary'

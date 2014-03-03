@@ -14,4 +14,9 @@ describe Question do
     question.title = ""
     expect(question).to be_invalid
   end 
+
+  it "title is 4 char or less." do
+    question.title = "Who?"
+    expect(question).to be_invalid
+  end
 end
