@@ -35,7 +35,7 @@ end
 group :test do
   gem 'capybara'
   gem 'launchy'
-  gem "capybara-webkit"
+ # gem 'capybara-webkit'
   gem "database_cleaner"
 end
 
