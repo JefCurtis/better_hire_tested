@@ -21,7 +21,6 @@ class CandidatesController < ApplicationController
   end
 
   def show
-
   end
 
   def edit
