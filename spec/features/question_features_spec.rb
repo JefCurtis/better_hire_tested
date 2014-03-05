@@ -35,7 +35,7 @@ feature :question do
     create :question
     visit positions_path
     click_on "details"
-    click_on "edit question"
+    click_on "edit"
     fill_in "Title", with: "Changed question"
     click_on "Update"
     expect(page).to have_text("Your question has been updated")
@@ -45,7 +45,7 @@ feature :question do
     create :question
     visit positions_path
     click_on "details"
-    click_on "edit question"
+    click_on "edit"
     fill_in "Title", with: ""
     click_on "Update"
     expect(page).to have_text("There was an error editing your question")

@@ -32,8 +32,6 @@ $border-radius-large: 1px;
   font-size: 20px;
   text-transform: lowercase;
   font-weight: 100;
-
-
 }
 
 .btn-clear {
@@ -120,5 +118,10 @@ section#section-two {
 }
 .center {
   text-align: center;
+}
+
+.help-inline {
+  color: red;
+  font-style: bold;
 }
 

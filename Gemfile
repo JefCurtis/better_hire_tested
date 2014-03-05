@@ -30,6 +30,8 @@ group :test, :development do
   gem 'quiet_assets'
   gem "binding_of_caller"
   gem "pry-rails"
+  gem "faker"
+
 end
 
 group :test do
@@ -38,6 +40,10 @@ group :test do
   gem "capybara-webkit"
   gem "database_cleaner"
 end
+
+gem 'formtastic'
+gem 'formtastic-bootstrap',git: 'https://github.com/nickl-/formtastic-bootstrap3.git'
+
 
 gem "bootstrap-sass"
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes

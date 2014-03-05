@@ -8,6 +8,14 @@
   %p
     = "Address: #{@candidate.address}"
   %p
-    = link_to "edit", edit_candidate_path(@candidate)
-    = link_to "delete", candidate_path(@candidate), method: :delete, data: { confirm: "Are you sure?" } 
-    = link_to "go back", request.referer
+    Job Position:
+    - if @candidate.position.nil?
+      %p 
+        = link_to "add a job template", edit_candidate_path(@candidate)
+    - else
+      %p
+        = link_to "#{@candidate.position.name}", position_path(@candidate.position)
+  %p
+    = link_to "edit", edit_candidate_path(@candidate), class: "btn btn-default"
+    = link_to "delete", candidate_path(@candidate), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-default"
+    = link_to "go back", request.referer, class: "btn btn-default"

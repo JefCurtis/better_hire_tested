@@ -56,5 +56,15 @@ feature :position do
     page.driver.browser.accept_js_confirms
     expect(page).to have_text("Your job position has been deleted.")
   end
+
+  scenario "A user can add a candidate to a job position successfully" do
+    position = create :position
+    candidate = create :candidate
+    visit position_path(position)
+    click_on "Use this template"
+    check "Bob Smith"
+    click_on "Add"
+    expect(page).to have_text("Bob Smith has been added your template")
+  end
   
 end

@@ -1,14 +1,19 @@
 .container
+  .spacer25 
   .row
-    %ul.list-group
-    - @candidates.each do |candidate|
-      / %li.list-group-item.col-md-4
-      / = link_to "#{candidate.first_name} #{candidate.last_name}", candidate
-      .row
-        = link_to "<li class ='list-group-item col-md-4'> #{candidate.first_name} #{candidate.last_name}</li>".html_safe, candidate  
-      / = link_to "edit", edit_candidate_path(candidate), class: "btn btn-default btn-sm pull-right"
-      / = link_to "delete", candidate_path(candidate), method: :delete, data: { confirm: 'Are you sure?' }, 
-      /   class: "btn btn-default btn-sm pull-right"
-    
+    .list-group.col-md-6
+      - @candidates.each do |candidate|
+        / = link_to "<div class ='list-group'> #{candidate.first_name} #{candidate.last_name} </div>".html_safe, candidate
+        - if candidate.position.nil?      
+          %a.list-group-item{href: candidate_path(candidate)}
+            %h3.list-group-item-heading
+              = "#{candidate.first_name} #{candidate.last_name}"
+            %p.list-group-item-text Add a job template
+        - else
+          %a.list-group-item{href: candidate_path(candidate)}
+            %h3.list-group-item-heading
+              = "#{candidate.first_name} #{candidate.last_name}"
+            %p.list-group-item-text
+              = "#{candidate.position.name}"
   .row
-    = link_to "Add a candidate", new_candidate_path, class: "btn btn-primary"
+    = link_to "Add a candidate", new_candidate_path, class: "btn btn-primary" 

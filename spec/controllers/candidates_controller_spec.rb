@@ -120,6 +120,12 @@ describe CandidatesController do
       put :update, id: candidate2.id, candidate: dup_email_params
       expect(flash[:alert]).to eq("There was a problem updating your candidate")  
     end
+    it "should update position_id when position added" do
+      position = create :position
+      candidate = create :candidate
+      put :update, id: candidate.id, candidate: { position_id: position.id }
+    end
+
   end
 
 end

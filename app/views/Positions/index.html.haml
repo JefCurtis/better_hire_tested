@@ -3,10 +3,13 @@
     .col-sm-12.col-md-6
       %h2 Dashboard
       %br
-      .well-sm
-        - @positions.each do |position|
+      - @positions.each do |position|
+        %h3 
+          Title:
           = position.name
           %br
+        .well
+          Details:
           = position.description
           %br
           = link_to "details", position
