@@ -8,7 +8,7 @@
   .well
     %p
       = @answer.body
-      = #link_to 'edit answer', edit_answer_question_path(@answer, question), class: 'btn btn-clear'
+      = #link_to 'edit answer', edit_answer_path(@answer, question), class: 'btn btn-clear'
       = #link_to 'delete this question', answer_question_path(@answer, question), method: :delete, data: { confirm: "Are you sure?"}, class: "btn btn-clear"
       = #link_to 'Create Answer', edit_answer_path(answer), class: 'btn btn-primary'
       = #link_to 'Add an answer', new_answer_question_path(@answer), class: 'btn btn-clear'
