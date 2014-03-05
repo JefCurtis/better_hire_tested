@@ -1,0 +1,13 @@
+.container
+  -if @answer.errors.present?
+    %ul
+      - @answer.errors.full_messages.each do |e|
+        %li
+          = e
+  .row
+    .form-group.col-xs-5
+      = form_for @answer do |f|
+        = f.label :Answer
+        = f.text_field :body, class: "form-control"
+        %br
+        = f.submit class: "btn btn-primary"

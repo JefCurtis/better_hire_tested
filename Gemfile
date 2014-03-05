@@ -22,7 +22,7 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'faker'
 
 group :development do  
-  gem "better_errors"
+ #gem "better_errors"
 end
 
 group :test, :development do

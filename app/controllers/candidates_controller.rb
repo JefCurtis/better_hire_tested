@@ -2,6 +2,7 @@ class CandidatesController < ApplicationController
   before_action :find_candidate, only: [ :show, :edit, :update ]
   def index
     @candidates = Candidate.all
+
   end
 
   def new
@@ -11,6 +12,7 @@ class CandidatesController < ApplicationController
   def create
     @candidate = Candidate.new candidate_params
     if @candidate.save
+      session[:candid]=@candidate.id
       redirect_to @candidate
     else
       flash.now[:alert]  = "There was a problem creating your candidate"
@@ -33,7 +35,11 @@ class CandidatesController < ApplicationController
       render :edit
     end
   end
-
+  
+  def destroy
+    @candidate.destroy 
+    redirect_to candidate_path, notice: "Your candidate has been deleted."
+  end
 
   private
 

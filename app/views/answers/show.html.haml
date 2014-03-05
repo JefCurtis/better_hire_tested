@@ -1,0 +1,18 @@
+.container
+  %h2
+    = "#{@answer.body} template"
+
+  %p Answers to Ask the Candidate:
+  - #@answer.question.each do |answer|
+
+  .well
+    %p
+      = @answer.body
+      = #link_to 'edit answer', edit_answer_question_path(@answer, question), class: 'btn btn-clear'
+      = #link_to 'delete this question', answer_question_path(@answer, question), method: :delete, data: { confirm: "Are you sure?"}, class: "btn btn-clear"
+      = #link_to 'Create Answer', edit_answer_path(answer), class: 'btn btn-primary'
+      = #link_to 'Add an answer', new_answer_question_path(@answer), class: 'btn btn-clear'
+
+
+      =#link_to 'delete this answer', destroy_answer_path(@answer), method: :delete, data: { confirm: 'Are you sure you want to delete the answer?'}, class: "btn btn-clear"
+      =#link_to 'Back to all', position_question_path, class: 'btn btn-clear'

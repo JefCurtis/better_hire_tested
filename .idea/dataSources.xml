@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" hash="3025274471">
+    <data-source source="LOCAL" name="Rails better_hire_tested: development" uuid="22be9514-c761-409e-a471-39130df9f325">
+      <driver-ref>postgresql</driver-ref>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql:better_hire_tdd_development</jdbc-url>
+      <libraries />
+    </data-source>
+    <data-source source="LOCAL" name="Rails better_hire_tested: test" uuid="dfd245da-5398-4b2b-84d3-069ba8b8194c">
+      <driver-ref>postgresql</driver-ref>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql:better_hire_tdd_test</jdbc-url>
+      <libraries />
+    </data-source>
+  </component>
+</project>
+

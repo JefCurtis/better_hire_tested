@@ -1,5 +1,7 @@
 BetterHireTdd::Application.routes.draw do
 
+  resources :answers, only: [:new, :show, :create, :edit, :destroy]
+
   devise_for :users
 
   resources :positions do

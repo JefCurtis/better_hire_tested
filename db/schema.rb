@@ -11,10 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140303022507) do
+ActiveRecord::Schema.define(version: 20140305003255) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "answers", force: true do |t|
+    t.text     "body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "question_id"
+    t.integer  "cand_id"
+  end
+
+  add_index "answers", ["question_id"], name: "index_answers_on_question_id", using: :btree
 
   create_table "candidates", force: true do |t|
     t.string   "first_name"
@@ -32,7 +42,10 @@ ActiveRecord::Schema.define(version: 20140303022507) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "description"
+    t.integer  "user_id"
   end
+
+  add_index "positions", ["user_id"], name: "index_positions_on_user_id", using: :btree
 
   create_table "questions", force: true do |t|
     t.string   "title"
@@ -40,9 +53,11 @@ ActiveRecord::Schema.define(version: 20140303022507) do
     t.integer  "position_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   add_index "questions", ["position_id"], name: "index_questions_on_position_id", using: :btree
+  add_index "questions", ["user_id"], name: "index_questions_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
