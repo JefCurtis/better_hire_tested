@@ -34,6 +34,10 @@ class CandidatesController < ApplicationController
     end
   end
 
+   def destroy
+    @candidate.destroy
+    redirect_to candidates_path
+   end
 
   private
 
