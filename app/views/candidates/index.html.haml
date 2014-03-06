@@ -1,0 +1,19 @@
+.container
+  .spacer25 
+  .row
+    .list-group.col-md-6
+      - @candidates.each do |candidate|
+        / = link_to "<div class ='list-group'> #{candidate.first_name} #{candidate.last_name} </div>".html_safe, candidate
+        - if candidate.position.nil?      
+          %a.list-group-item{href: candidate_path(candidate)}
+            %h3.list-group-item-heading
+              = "#{candidate.first_name} #{candidate.last_name}"
+            %p.list-group-item-text Add a job template
+        - else
+          %a.list-group-item{href: candidate_path(candidate)}
+            %h3.list-group-item-heading
+              = "#{candidate.first_name} #{candidate.last_name}"
+            %p.list-group-item-text
+              = "#{candidate.position.name}"
+  .row
+    = link_to "Add a candidate", new_candidate_path, class: "btn btn-primary" 

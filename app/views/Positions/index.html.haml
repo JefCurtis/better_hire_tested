@@ -1,0 +1,17 @@
+.container
+  .row
+    .col-sm-12.col-md-6
+      %h2 Dashboard
+      %br
+      - @positions.each do |position|
+        %h3 
+          Title:
+          = position.name
+          %br
+        .well
+          Details:
+          = position.description
+          %br
+          = link_to "details", position
+          %hr
+  = link_to "Add a job position", new_position_path, class: "btn btn-default"

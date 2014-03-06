@@ -1,0 +1,10 @@
+.container
+  %h3 Available Candidates
+  - if Candidate.all_but(@position).empty?
+    %p Start by creating some possible candidates
+    = link_to "here", new_candidate_path, class: "btn btn-default"
+  - else 
+  
+  = semantic_form_for @position do |f|
+    = f.input :candidates, :as => :check_boxes, class: "form-control"
+    = f.action :submit, :as => :button, class: "btn btn-default"

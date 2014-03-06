@@ -1,0 +1,33 @@
+%section#section-one{"data-speed" => "10", "data-type" => "background"}
+  = render "nav"
+  .container
+    .row
+      .spacer50
+      .col-xs-12
+        %h1#welcome-title a better hire.
+        %hr
+        %h2#welcome-subtitle helping you hire your next super star
+        .spacer25
+        %h4 We will help you to track, manage, and rate your candidates to assist you in your hiring. We understand the importance of hiring good candidates and this simple and easy to use web application will help you immensly, from your phone or computer.
+        %h4 With this website you are able to create questions, perform the interview, track, manage, and rate your candidates. You can also save them for later postings. You can also export them in a .pdf format!
+        .spacer25
+        .col-xs-2.col-xs-offset-6
+        %a.btn.btn-lg.btn-primary{href: "#"} Sign Up
+    .row
+
+%section#section-two{"data-speed" => "10", "data-type" => "background"}
+  .container
+    .row
+      .spacer50
+      .col-xs-12
+        %h2 Example Templates to get you started.
+        %p We are here to help you make the right decision for your next hire by giving you the tools to make it easier.
+  = render 'images'
+  .container
+    .row
+      .spacer50
+      .spacer50
+      .well.col-xs-10.col-xs-offset-1.col-sm-offset-1.col-sm-7.col-md-7.col-md-offset-3
+        = render 'sign_up'
+
+

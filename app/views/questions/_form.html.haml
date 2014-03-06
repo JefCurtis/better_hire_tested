@@ -1,0 +1,14 @@
+- if @question.errors.any?
+  #error_explanation
+    %p
+      = pluralize(@question.errors.count, "error")
+      prohibited the project from being saved:
+    %ul
+      - @question.errors.full_messages.each do |msg|
+        %li= msg
+= form_for [@position, @question], html: {class: "form-horizontal"} do |f|
+  .form-group
+    = f.label :title
+    = f.text_field :title, class: "form-control"
+  %br
+  = f.submit class: "btn btn-primary"
