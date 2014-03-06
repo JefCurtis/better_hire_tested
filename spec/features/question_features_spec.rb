@@ -15,7 +15,7 @@ feature :question do
     create :position
     visit positions_path
     click_on "details"
-    click_on "Add a question"
+    first(:link, 'Add a question').click
     fill_in "Title", with: "What is your favorite color?"
     click_on "Create"
     expect(page).to have_text("Your question has been added")
@@ -25,7 +25,7 @@ feature :question do
     create :position
     visit positions_path
     click_on "details"
-    click_on "Add a question"
+    first(:link, 'Add a question').click
     fill_in "Title", with: ""
     click_on "Create"
     expect(page).to have_text("There was an error trying to create your question")
@@ -35,7 +35,7 @@ feature :question do
     create :question
     visit positions_path
     click_on "details"
-    click_on "edit"
+    first(:link, "Edit").click
     fill_in "Title", with: "Changed question"
     click_on "Update"
     expect(page).to have_text("Your question has been updated")
@@ -45,7 +45,7 @@ feature :question do
     create :question
     visit positions_path
     click_on "details"
-    click_on "edit"
+    first(:link, "Edit").click
     fill_in "Title", with: ""
     click_on "Update"
     expect(page).to have_text("There was an error editing your question")

@@ -3,12 +3,16 @@
 @import url(http://fonts.googleapis.com/css?family=Roboto:400,100);
 
 $brand-primary: #ff8b43; //orange
+$secondary-color: #E84347; //red
+$third-color: #55A572; //green
+$blue-color: #354f70;
 
 $font-family-sans-serif: "Roboto", Helvetica, Arial, sans-serif;
 $headings-font-weight: 100;
 $font-family-serif: 'Prociono', "Times New Roman", Times, serif;
 $font-size-base: 16px;
 $font-size-h1: floor($font-size-base * 4);
+$well-bg: #fff;
 
 $input-border-radius: 1px;
 
@@ -16,10 +20,9 @@ $navbar-default-bg: #354f70; //blue
 $navbar-default-link-color: #fff;
 $navbar-default-link-hover-color: $brand-primary;
 
-$primaryButtonBackground: #FF8B43;  //orange
+$primaryButtonBackground: $brand-primary;  //orange
 $navbar-inverse-link-color: black;
 $section-one-bg: #354f70; //blue
-$secondary-color: #E84347;
 
 $border-radius-base: 1px;
 $border-radius-large: 1px;
@@ -27,6 +30,71 @@ $border-radius-large: 1px;
 
 
 @import 'bootstrap';
+// collapsible candidates index panels
+.panel-group {
+  margin-bottom: 5px;
+  h4 {
+    margin-left: 15px;
+  }
+  .panel-heading {
+    // @include box-shadow;
+    border-bottom: 1px solid;
+  }
+}
+.panel-body {
+}
+.list-group {
+  margin-left: 10px;
+}
+.panel-header {
+
+}
+
+.panel {
+  border: 1px solid;
+}
+
+.question-list {
+  li {
+    padding: 10px;
+  }
+  hr {
+    background-color: $blue-color;
+    height: 2px; 
+  }
+}
+
+.info-panel {
+  // border-bottom:1px solid black; border-bottom:1px solid black;
+}
+
+.position-details {
+  .well {
+    color: $third-color;
+    // background-color: $third-color;
+  }
+  h3 {
+    text-transform: uppercase;
+    // border-bottom: 1px solid #354f70
+  }
+  p {
+
+  }
+}
+
+.form-group {
+  // input { padding: 20px; }
+  .well {
+    background-color: $third-color
+    // background-image:image-url("whitey.png");
+    // background-repeat:repeat;
+  }
+  .control-label {
+    text-transform: capitalize;
+    padding-top: 10px;
+    text-align: center;
+  }
+}
 
 .navbar {
   font-size: 20px;

@@ -13,10 +13,20 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require bootstrap
 //= require_tree .
 
+
 window.setTimeout(function() {
-    $(".alert").slideDown(1500, 0).slideUp(500, function(){
+    $(".alert").slideDown(1500, 0).slideUp(1500, function(){
         $(this).remove(); 
     });
-}, 3000);
+});
+
+
+// $(document).ready(function(){
+//   alert('Your page has loaded - and Now this alert appears!');
+//   $('.collapse').collapse();
+// });
+
+

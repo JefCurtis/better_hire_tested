@@ -1,19 +1,26 @@
 .container
   .spacer25 
+  %h2 Candidates
   .row
     .list-group.col-md-6
       - @candidates.each do |candidate|
-        / = link_to "<div class ='list-group'> #{candidate.first_name} #{candidate.last_name} </div>".html_safe, candidate
-        - if candidate.position.nil?      
-          %a.list-group-item{href: candidate_path(candidate)}
-            %h3.list-group-item-heading
-              = "#{candidate.first_name} #{candidate.last_name}"
-            %p.list-group-item-text Add a job template
-        - else
-          %a.list-group-item{href: candidate_path(candidate)}
-            %h3.list-group-item-heading
-              = "#{candidate.first_name} #{candidate.last_name}"
-            %p.list-group-item-text
-              = "#{candidate.position.name}"
+        #accordion.panel-group 
+          .panel.panel-default
+            .panel-heading
+              %h4.panel-title.with-border
+                %a{"data-parent" => "#accordion", "data-toggle" => "collapse", href: "##{dom_id(candidate)}"}
+                  = "#{candidate.first_name} #{candidate.last_name}"
+            .panel-collapse.collapse.out{id:dom_id(candidate)}
+              .panel-body
+                = image_tag candidate.avatar.url(:thumb), class: "image-wrapper"
+              .info-panel.clear-fix
+                = "<h4><i class='glyphicon glyphicon-bookmark'></i> #{candidate.position.name}</h4>".html_safe if !candidate.position.nil?
+              .info-panel.clear-fix
+                = "<h4><i class='glyphicon glyphicon-envelope'></i> #{candidate.email}</h4>".html_safe 
+              .info-panel.clear-fix
+                = "<h4><i class='glyphicon glyphicon-phone'></i> #{candidate.phone}</h4>".html_safe 
+              .info-panel.clear-fix
+                = "<h4><i class='glyphicon glyphicon-map-marker'></i> #{candidate.address}</h4>".html_safe 
   .row
     = link_to "Add a candidate", new_candidate_path, class: "btn btn-primary" 
+ 

@@ -1,5 +1,5 @@
 class CandidatesController < ApplicationController
-  before_action :find_candidate, only: [ :show, :edit, :update ]
+  before_action :find_candidate, only: [ :show, :edit, :update, :destroy]
   def index
     @candidates = Candidate.all
   end
@@ -22,6 +22,11 @@ class CandidatesController < ApplicationController
 
   end
 
+  def destroy
+    @candidate.destroy
+    redirect_to candidates_path, notice: "Your candidate has been deleted."
+  end
+
   def edit
   end
 
@@ -38,7 +43,7 @@ class CandidatesController < ApplicationController
   private
 
     def candidate_params
-      params.require(:candidate).permit(:first_name, :last_name, :email, :address, :phone, :note, :position_id)
+      params.require(:candidate).permit(:first_name, :last_name, :email, :address, :phone, :note, :position_id, :avatar)
     end
 
     def find_candidate

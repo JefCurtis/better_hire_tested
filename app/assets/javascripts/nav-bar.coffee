@@ -1,5 +1,5 @@
 $ ->
-  $("nav").on "click", "a", (e) -> 
+  $("navbar-link-alt").on "click", "a", (e) -> 
     $(this).parent("li").addClass("active").siblings().removeClass "active"
     # e.preventDefault()
 

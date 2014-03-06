@@ -1,33 +1,20 @@
-/ .form-group.col-md-6
-/   =form_for @candidate do |f|
-/     =f.label :first_name, "First Name"
-/     =f.text_field :first_name, class: "form-control"
-/     %br
-/     =f.label :last_name, "Last Name"
-/     =f.text_field :last_name, class: "form-control"
-/     %br
-/     =f.label :email
-/     =f.text_field :email, class: "form-control"
-/     %br
-/     =f.label :address
-/     =f.text_area :address, class: "form-control"
-/     %br
-/     =f.label :phone
-/     =f.text_field :phone, class: "form-control"
-/     %br
-/     =f.submit class: "btn btn-primary"
-.form-group.col-md-5
-
-  = semantic_form_for @candidate do |f|
-    .error-messages
-      = f.semantic_errors :position
-    = f.input :first_name, input_html: { class: 'form-control'}
-    = f.input :last_name, input_html: { class: 'form-control'}
-    = f.input :email, as: :email, input_html: { class: 'form-control'}
-    = f.input :address, input_html: { class: 'form-control', rows: 10, cols: 100}
-    = f.input :phone, input_html: { class: 'form-control'}
-    = f.input :position, include_blank: false,  input_html: { class: 'form-control'}
-    = f.action :submit, button_html: { class: 'form-control btn btn-primary'}
-    %hr
-    = f.action :cancel, label: "Cancel", button_html: { class: 'form-control btn btn-default'}
-= link_to "go back", request.referer, class: "btn btn-default"
+.row
+  .col-md-6
+    .form-group
+      .well
+        = semantic_form_for(@candidate, :html => { :multipart => true }) do |f|
+          .error-messages
+            = f.semantic_errors :position
+          = f.input :first_name, required: false, input_html: { class: 'form-control'}
+          = f.input :last_name, required: false, input_html: { class: 'form-control'}
+          = f.input :avatar, required: false, :label => "Photo", input_html: { class: 'form-control'}
+          = f.input :email, as: :email, required: false, input_html: { class: 'form-control'}
+          = f.input :address, required: false, input_html: { class: 'form-control', rows: 10, cols: 100}
+          = f.input :phone, required: false, input_html: { class: 'form-control'}
+          = f.input :position, :include_blank => "No job template right now", input_html: { class: 'form-control'}
+          %br
+          .row
+            .col-xs-6.clear-fix
+              = f.action :submit, button_html: { class: 'form-control btn btn-primary'}
+            .col-xs-6          
+              = link_to "cancel", request.referer, class: "form-control btn btn-default"

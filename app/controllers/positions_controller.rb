@@ -46,7 +46,7 @@ class PositionsController < ApplicationController
   private 
 
   def position_params
-    params.require(:position).permit(:name, :description)
+    params.require(:position).permit(:name, :description, { candidate_ids: [] })
   end
 
   def find_position

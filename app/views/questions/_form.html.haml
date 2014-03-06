@@ -1,14 +1,45 @@
-- if @question.errors.any?
-  #error_explanation
-    %p
-      = pluralize(@question.errors.count, "error")
-      prohibited the project from being saved:
-    %ul
-      - @question.errors.full_messages.each do |msg|
-        %li= msg
-= form_for [@position, @question], html: {class: "form-horizontal"} do |f|
-  .form-group
-    = f.label :title
-    = f.text_field :title, class: "form-control"
+/ - if @question.errors.any?
+/   #error_explanation
+/     %p
+/       = pluralize(@question.errors.count, "error")
+/       prohibited the project from being saved:
+/     %ul
+/       - @question.errors.full_messages.each do |msg|
+/         %li= msg
+
+= semantic_form_for [@position, @question], html: {class: "form-horizontal"} do |f|
+  .error-messages
+    = f.semantic_errors :position
+  = f.input :title, required: false, input_html: { class: "form-control" }
   %br
-  = f.submit class: "btn btn-primary"
+  = f.action :submit, button_html: { class: 'form-control btn btn-primary' }
+
+  
+/   .form-group
+/     = f.label :title
+/     = f.text_field :title, class: "form-control"
+/   %br
+/   = f.submit class: "btn btn-primary"
+
+
+
+/ .row
+/   .col-md-6
+/     .form-group
+/       .well
+/         = semantic_form_for(@candidate, :html => { :multipart => true }) do |f|
+/           .error-messages
+/             = f.semantic_errors :position
+/           = f.input :first_name, required: false, input_html: { class: 'form-control'}
+/           = f.input :last_name, required: false, input_html: { class: 'form-control'}
+/           = f.input :avatar, required: false, :label => "Photo", input_html: { class: 'form-control'}
+/           = f.input :email, as: :email, required: false, input_html: { class: 'form-control'}
+/           = f.input :address, required: false, input_html: { class: 'form-control', rows: 10, cols: 100}
+/           = f.input :phone, required: false, input_html: { class: 'form-control'}
+/           = f.input :position, :include_blank => "No job template right now", input_html: { class: 'form-control'}
+/           %br
+/           .row
+/             .col-xs-6.clear-fix
+/               = f.action :submit, button_html: { class: 'form-control btn btn-primary'}
+/             .col-xs-6          
+/               = link_to "cancel", request.referer, class: "form-control btn btn-default"

@@ -12,6 +12,6 @@ feature "user" do
 
   scenario "when logged in user visits the homepage" do
     visit "/"
-    expect(page).to have_content("Dashboard")
+    expect(page).to have_content("Job Positions")
   end
 end

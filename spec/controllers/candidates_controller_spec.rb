@@ -127,6 +127,13 @@ describe CandidatesController do
     end
 
   end
+  describe "DELETE #destroy" do
+    it "should delete successfully" do
+      candidate = create :candidate
+      delete :destroy, id: candidate.id
+      expect(Candidate.count).to eq(0)
+    end
+  end
 
 end
 

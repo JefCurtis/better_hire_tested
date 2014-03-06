@@ -1,21 +1,21 @@
 .container
-  %h3 
-    = "#{@candidate.first_name} #{@candidate.last_name}"
-  %p
-    = "Email: #{@candidate.email}"
-  %p
-    = "Phone: #{@candidate.phone}"
-  %p
-    = "Address: #{@candidate.address}"
-  %p
-    Job Position:
-    - if @candidate.position.nil?
-      %p 
-        = link_to "add a job template", edit_candidate_path(@candidate)
-    - else
-      %p
-        = link_to "#{@candidate.position.name}", position_path(@candidate.position)
+  .spacer25
+  .row
+    .col-xs-12.col-sm-6.col-md-6
+      .well
+        = image_tag @candidate.avatar.url(:thumb), class: "image-wrapper"
+        %h3.with-border
+          = "#{@candidate.first_name} #{@candidate.last_name}"
+        .info-panel.clear-fix
+          = "<h4><i class='glyphicon glyphicon-bookmark'></i> #{@candidate.position.name}</h4>".html_safe if !@candidate.position.nil?
+        .info-panel.clear-fix
+          = "<h4><i class='glyphicon glyphicon-envelope'></i> #{@candidate.email}</h4>".html_safe 
+        .info-panel.clear-fix
+          = "<h4><i class='glyphicon glyphicon-phone'></i> #{@candidate.phone}</h4>".html_safe 
+        .info-panel.clear-fix
+          = "<h4><i class='glyphicon glyphicon-map-marker'></i> #{@candidate.address}</h4>".html_safe 
   %p
     = link_to "edit", edit_candidate_path(@candidate), class: "btn btn-default"
     = link_to "delete", candidate_path(@candidate), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-default"
     = link_to "go back", request.referer, class: "btn btn-default"
+            

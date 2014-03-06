@@ -63,8 +63,8 @@ feature :position do
     visit position_path(position)
     click_on "Use this template"
     check "Bob Smith"
-    click_on "Add"
-    expect(page).to have_text("Bob Smith has been added your template")
+    click_on "Update Position"
+    expect(page).to have_text("Your job position has been updated!")
   end
   
 end

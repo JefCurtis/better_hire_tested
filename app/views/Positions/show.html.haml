@@ -1,24 +1,25 @@
 .container
-  %h2
-    = "#{@position.name} template"
-  %p
-    = @position.description
-  .well  
-    %p Questions to ask:
-    %ol 
-      - @position.questions.each do |question|
-        %li
-          = question.title
-          = link_to "edit", edit_position_question_path(@position, question)
-          = link_to "delete", position_question_path(@position, question), method: :delete, data: { confirm: "Are you sure?"}
+  .col-sm-12.col-md-8
+    %h2
+      = "#{@position.name} template"
+    %p
+      = @position.description
+    .well  
+      %p Questions to ask:
+      %ol.question-list
+        - @position.questions.each do |question|
+          %li
+            = question.title
+            .btn-group.pull-right
+              %button.btn.btn-default.btn-xs{type:"button"}= link_to "Edit", edit_position_question_path(@position, question)
+              %button.btn.btn-default.btn-xs{type:"button"}= link_to "Delete", position_question_path(@position, question), method: :delete, data: { confirm: "Are you sure you want to delete this template?"}
+          %hr
+              
+      .btn-group
+        %button.btn.btn-default{type:"button"}= link_to "Add a question", new_position_question_path(@position)
+        %button.btn.btn-default{type:"button"}= link_to "Edit", edit_position_path(@position)
+        %button.btn.btn-default{type:"button"}= link_to "Delete", position_path(@position), method: :delete, data: { confirm: "Are you sure you want to delete this template?"}
+    = link_to "Use this template", position_candidates_path(@position), class: "btn btn-default"
 
-    %br
-    = link_to "Edit", edit_position_path(@position), class: "btn btn-default"
-    = link_to "delete this template", position_path(@position), method: :delete, data: { confirm: 'Are you sure you want to delete the template?'}, class: "btn btn-default"
-  = link_to "Add a question", new_position_question_path(@position), class: "btn btn-clear"
-  = link_to "Use this template", position_candidates_path(@position), class: "btn btn-default"
-
-  = link_to "Back to all", positions_path, class: "btn btn-default"
-
-
+    = link_to "Back to all", positions_path, class: "btn btn-default"
 
