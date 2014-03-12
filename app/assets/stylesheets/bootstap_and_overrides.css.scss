@@ -5,7 +5,9 @@
 $brand-primary: #ff8b43; //orange
 $secondary-color: #E84347; //red
 $third-color: #55A572; //green
-$blue-color: #354f70;
+$blue-color: #354f70; //blue
+$brand-success: #55a572;
+
 
 $font-family-sans-serif: "Roboto", Helvetica, Arial, sans-serif;
 $headings-font-weight: 100;
@@ -41,13 +43,36 @@ $border-radius-large: 1px;
     border-bottom: 1px solid;
   }
 }
+
+.btn-group a:hover {
+  text-decoration: none;
+}
+.progress {
+  margin-top: 15px;
+}
+
 .panel-body {
 }
 .list-group {
   margin-left: 10px;
+  font-size: 1.1em;
+  a:hover {
+    text-decoration: none;
+  }
+  .panel-title {
+    text-transform: uppercase;
+  }
+  .edit-icon {
+    font-size: 1.2em;
+    padding-right: 25px;
+  }
 }
 .panel-header {
 
+}
+
+.modal {
+  margin-top: 50px;
 }
 
 .panel {
@@ -55,12 +80,22 @@ $border-radius-large: 1px;
 }
 
 .question-list {
+  padding-left: 0px;
   li {
     padding: 10px;
+    list-style: none;
   }
   hr {
-    background-color: $blue-color;
-    height: 2px; 
+    background-color: $secondary-color;
+    height: 1px; 
+    margin: 0px;
+  }
+  .btn-group {
+    margin-left: 10px;
+    margin-top: 15px;
+  }
+  .well {
+    border: 1px solid;
   }
 }
 
@@ -100,6 +135,30 @@ $border-radius-large: 1px;
   font-size: 20px;
   text-transform: lowercase;
   font-weight: 100;
+}
+
+.navbar-right {
+  font-size: 14px;
+  li {
+    .sign-out {
+      padding-right: 15px;
+      font-weight: bold;
+      // color: $brand-primary !important;
+    }
+    a {
+      text-transform: uppercase;
+      padding-left: 10px;
+      padding-left: 0px;
+      padding-right: 15px;
+      .sign-out {
+      margin-right: 15px;
+      }
+    }
+  }
+  .sign-out a {
+    margin-right: 15px;
+  }
+
 }
 
 .btn-clear {

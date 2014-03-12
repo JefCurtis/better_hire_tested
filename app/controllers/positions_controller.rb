@@ -20,8 +20,6 @@ class PositionsController < ApplicationController
   end
 
   def show
-    # @question = @position.questions.new
-    # @question.save
 
   end
 
@@ -30,7 +28,7 @@ class PositionsController < ApplicationController
 
   def update
     if @position.update_attributes position_params
-      redirect_to @position, notice: "Your job position has been updated!"
+      redirect_to positions_path, notice: "Your job position has been updated!"
     else
       flash.now[:alert] = "There was an error updating your job position"
       render :edit

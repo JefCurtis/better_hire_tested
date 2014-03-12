@@ -1,0 +1,12 @@
+.modal-dialog
+  .modal-content
+    = semantic_form_for [@position] do |f|
+      .modal-header
+        %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} x
+        %h4#myModalLabel.modal-title Available Candidate
+      .modal-body
+        = f.input :candidates, as: :check_boxes, required: false, member_label: Proc.new { |t| h(t.first_name + " " + t.last_name) }
+        %br
+      .modal-footer
+        = f.action :submit, :as => :button, button_html: { class: "btn btn-primary" }
+        %button.btn.btn-default{"data-dismiss" => "modal", type: "button"} Close

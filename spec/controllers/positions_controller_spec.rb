@@ -92,13 +92,13 @@ describe PositionsController do
 
   describe "PATCH #update" do
 
-    let(:valid_position_params) { {position: {name: "Janitor", description: 'Mop Mop Mop, all day long.'}} }
+    let(:valid_position_params) { { name: "Janitor", description: 'Mop Mop Mop, all day long.'} }
 
     it "should update the position name" do
       position = create :position
       put :update, id: position.id, position: valid_position_params
       # flash[:notice].should_not be_nil
-      expect(response).to redirect_to(action: 'show') 
+      expect(response).to redirect_to(positions_path) 
     end
 
     it "should re-render the #edit template on invalid attempt" do

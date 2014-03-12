@@ -1,0 +1,5 @@
+$("##{dom_id(@question)}").parents(".question-wrapper").fadeOut(500, function() {
+$(this).html("");
+$(".completed").append("#{ j render 'interviews/candidates/answer', question: @question }");
+$("##{dom_id(@question)}").collapse();
+});

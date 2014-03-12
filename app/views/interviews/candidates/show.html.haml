@@ -1,0 +1,22 @@
+.spacer50
+.container
+  %h2= "Interview for #{@candidate.first_name} #{@candidate.last_name}"
+  %p
+    = "Job Position: #{@candidate.position.name}"
+    = link_to "edit", edit_position_path(@candidate.position)
+
+  .row
+    .col-xs-12
+      %h4 Incompleted Questions
+      .list-group.incompleted
+        - @questions_incomplete.each do |question|
+          = render 'answer', question: question
+  .row
+    .col-xs-12
+      %h4 Completed Questions
+      .list-group.completed
+        - @questions_complete.each do |question|
+          = render "answer", question: question, collapsed: true
+  .row
+    .col-xs-12
+      = link_to "All interviews", interviews_candidates_path, class: "btn btn-primary"

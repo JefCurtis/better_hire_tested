@@ -1,25 +1,31 @@
 .container
   .col-sm-12.col-md-8
     %h2
-      = "#{@position.name} template"
+      .row
+        .col-xs-7
+          = "#{@position.name} template"
+        .col-xs-5
+          .btn-group.btn-group-xs.pull-right
+            %button.btn.btn-default{type:"button"}= link_to "Add a question", new_position_question_path(@position), remote: true, "data-toggle" => "modal", "data-target" => "#new-question"
+            %button.btn.btn-default{type:"button"}= link_to "Edit", edit_position_path(@position)
     %p
       = @position.description
-    .well  
-      %p Questions to ask:
-      %ol.question-list
-        - @position.questions.each do |question|
-          %li
-            = question.title
-            .btn-group.pull-right
-              %button.btn.btn-default.btn-xs{type:"button"}= link_to "Edit", edit_position_question_path(@position, question)
-              %button.btn.btn-default.btn-xs{type:"button"}= link_to "Delete", position_question_path(@position, question), method: :delete, data: { confirm: "Are you sure you want to delete this template?"}
-          %hr
-              
-      .btn-group
-        %button.btn.btn-default{type:"button"}= link_to "Add a question", new_position_question_path(@position)
-        %button.btn.btn-default{type:"button"}= link_to "Edit", edit_position_path(@position)
-        %button.btn.btn-default{type:"button"}= link_to "Delete", position_path(@position), method: :delete, data: { confirm: "Are you sure you want to delete this template?"}
-    = link_to "Use this template", position_candidates_path(@position), class: "btn btn-default"
+    .paper
+      %h3 Questions to ask:
+      %ul.question-list
+        - @position.questions.order("id DESC").each do |question|
+          .well
+            %li
+              = question.title
+              .row
+                .btn-group
+                  %button.btn.btn-default.btn-xs{type:"button"}= link_to "Edit", edit_position_question_path(@position, question), remote: true, "data-toggle" => "modal", "data-target" => "##{dom_id(question)}"
+                  %button.btn.btn-default.btn-xs{type:"button"}= link_to "Delete", position_question_path(@position, question), method: :delete, data: { confirm: "Are you sure you want to delete this template?"}
+            .modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", role: "dialog", tabindex: "-1", id:dom_id(question)}
+            .modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", role: "dialog", tabindex: "-1", id: "new-question" }              
+    %br
+    .btn-group
+      %button.btn.btn-primary{type:"button"}= link_to "Assign a candidate to this template", position_candidates_path(@position), remote: true, "data-toggle" => "modal", "data-target" => "#assign_modal"
+      %button.btn.btn-default{type:"button"}= link_to "Back to all", positions_path
 
-    = link_to "Back to all", positions_path, class: "btn btn-default"
-
+    .modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", role: "dialog", tabindex: "-1", id: "assign_modal" }              

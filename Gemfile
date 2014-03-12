@@ -23,6 +23,8 @@ gem 'faker'
 
 gem "paperclip", "~> 4.1"
 
+gem 'active_link_to'
+
 group :development do  
   gem "better_errors"
 end
@@ -37,7 +39,7 @@ group :test, :development do
 end
 
 group :test do
-  gem 'capybara'
+  gem 'capybara', "~> 2.2.1"
   gem 'launchy'
   gem "capybara-webkit"
   gem "database_cleaner"

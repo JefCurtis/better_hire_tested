@@ -7,20 +7,28 @@
         #accordion.panel-group 
           .panel.panel-default
             .panel-heading
-              %h4.panel-title.with-border
+              .panel-title.with-border
                 %a{"data-parent" => "#accordion", "data-toggle" => "collapse", href: "##{dom_id(candidate)}"}
-                  = "#{candidate.first_name} #{candidate.last_name}"
+                  = "#{candidate.formatted_name}"
             .panel-collapse.collapse.out{id:dom_id(candidate)}
               .panel-body
-                = image_tag candidate.avatar.url(:thumb), class: "image-wrapper"
-              .info-panel.clear-fix
-                = "<h4><i class='glyphicon glyphicon-bookmark'></i> #{candidate.position.name}</h4>".html_safe if !candidate.position.nil?
-              .info-panel.clear-fix
-                = "<h4><i class='glyphicon glyphicon-envelope'></i> #{candidate.email}</h4>".html_safe 
-              .info-panel.clear-fix
-                = "<h4><i class='glyphicon glyphicon-phone'></i> #{candidate.phone}</h4>".html_safe 
-              .info-panel.clear-fix
-                = "<h4><i class='glyphicon glyphicon-map-marker'></i> #{candidate.address}</h4>".html_safe 
-  .row
-    = link_to "Add a candidate", new_candidate_path, class: "btn btn-primary" 
+                .row
+                  .col-xs-12.col-md-5
+                    = image_tag candidate.avatar.url(:thumb), class: "image-wrapper"
+                  .col-xs-12.col-md-7
+                    .info-panel
+                      = "<h4><i class='glyphicon glyphicon-bookmark'></i> #{candidate.position.name}</h4>".html_safe unless candidate.position.nil?
+                    .info-panel
+                      = "<h4><i class='glyphicon glyphicon-envelope'></i> #{candidate.email}</h4>".html_safe 
+                    .info-panel
+                      = "<h4><i class='glyphicon glyphicon-phone'></i> #{candidate.phone}</h4>".html_safe 
+                    .info-panel
+                      = "<h4><i class='glyphicon glyphicon-map-marker'></i> #{candidate.address}</h4>".html_safe 
+                      .pull-right
+                        = link_to "<i class='glyphicon glyphicon-cog'></i>".html_safe, edit_candidate_path(candidate) , "data-toggle" => "modal", "data-target" => "##{dom_id(candidate)}", class: "btn btn-primary", remote: true
+        .modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", role: "dialog", tabindex: "-1", id:dom_id(candidate)}
+
+  .col-xs-12
+    .row
+      = link_to "Add a candidate", new_candidate_path, class: "btn btn-primary" 
  

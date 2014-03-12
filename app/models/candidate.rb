@@ -2,6 +2,8 @@ class Candidate < ActiveRecord::Base
   validates :first_name, :last_name, :email, :phone, :address, presence: :true
   validates :email, uniqueness: :true
   belongs_to :position
+  has_many :answers
+  
   has_attached_file :avatar, 
                     styles: { large: "800X800>", medium: "300x300>", thumb: "150x150>" }, 
                     default_url: ActionController::Base.helpers.asset_path('missing_avatar.png')
@@ -11,14 +13,26 @@ class Candidate < ActiveRecord::Base
 
 
   scope :all_but, lambda { |ids| where("position_id not in (?) OR position_id IS NULL", ids) }
+  scope :with_template_assigned, -> { where("position_id IS NOT NULL") }
+  scope :with_no_template, -> { where("position_id IS NULL") }
 
-  def name
-    "#{first_name} #{last_name}".strip
+  def formatted_name
+    if first_name.nil? || last_name.nil?
+    email
+    else
+      "#{first_name.capitalize} #{last_name.capitalize}".strip
+    end
+  end
+
+  def interview_progress
+    if position.questions.count > 0 && answers.count > 0
+      (answers.count.to_f / position.questions.count.to_f) * 100
+    else
+      0
+    end
   end
 
   def has_position?
     position
   end
 end
-# has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
-#   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/

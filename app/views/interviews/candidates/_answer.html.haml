@@ -1,0 +1,15 @@
+#accordion.panel-group.question-wrapper
+  .panel.panel-default
+    .panel-heading
+      %h4.panel-title.with-border
+        %a{"data-parent" => "#accordion", "data-toggle" => "collapse", href: "##{dom_id(question)}", class: "#{'collapsed' if defined? collapsed}"}
+          %h4= question.title
+    .panel-collapse.collapse.in{id:dom_id(question), style: "#{'height: 0px;' if defined? collapsed}"}
+      .panel-body
+        - answer = question.answers.where(candidate_id: @candidate.id).first || question.answers.new
+        = semantic_form_for [question, answer], remote: true,  html: {class: "form-horizonntal"} do |f|
+          = f.semantic_errors :answer
+          = f.input :candidate_id, as: :hidden, input_html: {value: @candidate.id}
+          = f.input :title, as: :text, label: false, input_html: { class: "form-control", rows: 5 }              
+          %br
+          = f.action :submit, button_html: { class: "form-control btn btn-primary" }

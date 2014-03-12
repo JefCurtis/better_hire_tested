@@ -1,7 +1,10 @@
 .container
   %h3 Available Candidates
   .row
-    .col-sm-6
+    .col-xs-12.col-sm-6.form-group
       = semantic_form_for @position do |f|
-        = f.input :candidates, :as => :check_boxes, class: "form-control"
-        = f.action :submit, :as => :button, class: "btn btn-default"
+        = f.input :candidates, as: :check_boxes, member_label: Proc.new { |t| h(t.first_name + " " + t.last_name) }
+        = f.action :submit, as: :button, button_html: { class: "btn btn-primary"}
+
+
+

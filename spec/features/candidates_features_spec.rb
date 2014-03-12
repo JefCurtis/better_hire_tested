@@ -35,4 +35,6 @@ feature "candidate management" do
     click_on "Create"
     expect(page).to have_text("John Doe johndoe@example.com 604-555-5555 45 5th Ave Burnaby BC")    
   end
+
+  
 end

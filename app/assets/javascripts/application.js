@@ -18,15 +18,9 @@
 
 
 window.setTimeout(function() {
-    $(".alert").slideDown(1500, 0).slideUp(1500, function(){
+    $(".alert").slideDown(1500, 0).delay(3000).slideUp(700, function(){
         $(this).remove(); 
     });
 });
-
-
-// $(document).ready(function(){
-//   alert('Your page has loaded - and Now this alert appears!');
-//   $('.collapse').collapse();
-// });
 
 

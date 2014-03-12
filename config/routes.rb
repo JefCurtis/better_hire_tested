@@ -6,9 +6,17 @@ BetterHireTdd::Application.routes.draw do
     resources :questions, except: [:index, :show]
     resources :candidates, only: [:new, :create, :destroy, :index ], controller: "positions/candidates"
   end
+
+  resources :questions, only: [] do 
+    resources :answers, except: [:index, :show]
+  end
+  namespace 'interviews' do
+    resources :candidates, only: [:show, :index, :new], controller: "candidates"
+  end
   resources :candidates
   get "testing" => 'welcome#test'
   root "welcome#index"
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

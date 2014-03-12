@@ -17,5 +17,5 @@
   %p
     = link_to "edit", edit_candidate_path(@candidate), class: "btn btn-default"
     = link_to "delete", candidate_path(@candidate), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-default"
-    = link_to "go back", request.referer, class: "btn btn-default"
+    = link_to "back to all", candidates_path, class: "btn btn-default"
             
