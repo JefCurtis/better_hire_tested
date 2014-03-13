@@ -1,0 +1,48 @@
+.spacer25
+.container
+  %h2 Interviews
+  .row
+    .col-sm-12.col-md-8
+      - @interviews.each do |interview|
+        %ul.list-group
+          - if interview.interview_progress != 100
+            %li.list-group-item.interview-li
+              %h4= interview.candidate.formatted_name
+              %hr
+              .row
+                .col-xs-8
+                  %p=link_to "#{interview.position.name}", position_path(interview.position)
+                .col-xs-4
+                  - if interview.answers.count > 0 
+                    = link_to "Continue", interview_path(interview), class: "btn btn-default btn-sm pull-right"
+                  - else 
+                    = link_to "Start", interview_path(interview), class: "btn btn-default btn-sm pull-right"
+              .row
+                - if interview.answers.count > 0
+                  .col-xs-10
+                    .progress.progress-striped
+                      .progress-bar.progress-bar-success{"aria-valuemax" => "100", "aria-valuemin" => "0", "aria-valuenow" => "#{interview.interview_progress}", role: "progressbar", style: "width: #{interview.interview_progress}%"}
+                  .col-xs-2.percentage
+                    %h4= "#{interview.interview_progress}%"
+  .spacer25
+  - if @interviews.count != 0
+    %h2 Completed Interviews
+    .row
+      .col-sm-12.col-md-8
+        - @interviews.each do |interview|
+          %ul.list-group
+            -if interview.interview_progress == 100
+              %li.list-group-item.interview-li
+                %h4= interview.candidate.formatted_name
+                %hr
+                .row
+                  .col-xs-8
+                    %p= link_to "#{interview.position.name}", position_path(interview.position)
+                  .col-xs-4
+                    = link_to "Review", interview_path(interview), class: "btn btn-default btn-sm pull-right"
+
+
+
+
+
+  =link_to "Create a new interview", new_interview_path, class: "btn btn-primary"

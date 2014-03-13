@@ -2,10 +2,10 @@
 .container
   %h2 Job Position
   .row
-    .list-group.col-md-6
+    .list-group.col-md-8
       - @positions.each do |position|
         #accordion.panel-group 
-          .panel.panel-default
+          .panel.panel-default.position-panel
             .panel-heading
               .panel-title.with-border
                 %a{"data-parent" => "#accordion", "data-toggle" => "collapse", href: "##{dom_id(position)}"}= "#{position.name}"
@@ -13,12 +13,20 @@
               .info-panel.clear-fix
                 %h4
                   .row
-                    .col-xs-10
+                    .col-xs-11
                       = position.description
-                      %p= link_to "view questions", position_path(position)
-                    .col-xs-2.edit-icon
-                      .pull-right= link_to "", edit_position_path(position), class: "glyphicon glyphicon-cog"
+                .row
+                  .col-xs-11.col-xs-offset-1
+                .btn-group
+                  %button.btn.btn-default.btn-xs= link_to "view questions", position_path(position)
+                  %button.btn.btn-default.btn-xs.assign= link_to "Assign a candidate", position_candidates_path(position), remote: true, "data-toggle" => "modal", "data-target" => "#assign_modal"
+                  %button.btn.btn-default.btn-xs= link_to "<i class='glyphicon glyphicon-cog'></i> Edit".html_safe, edit_position_path(position)
+                .spacer25
+
   .col-xs-12
     .row
       = link_to "Add a job position", new_position_path, class: "btn btn-primary"
+
+.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", role: "dialog", tabindex: "-1", id: "assign_modal" }              
+
  

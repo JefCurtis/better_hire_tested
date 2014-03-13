@@ -10,9 +10,10 @@ BetterHireTdd::Application.routes.draw do
   resources :questions, only: [] do 
     resources :answers, except: [:index, :show]
   end
-  namespace 'interviews' do
-    resources :candidates, only: [:show, :index, :new], controller: "candidates"
-  end
+  resources :interviews
+  # namespace 'interviews' do
+  #   resources :candidates, only: [:show, :index, :new], controller: "candidates"
+  # end
   resources :candidates
   get "testing" => 'welcome#test'
   root "welcome#index"

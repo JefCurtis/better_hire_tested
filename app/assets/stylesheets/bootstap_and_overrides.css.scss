@@ -32,17 +32,68 @@ $border-radius-large: 1px;
 
 
 @import 'bootstrap';
+
+//nav bar active link
+.navbar-default .navbar-nav > li > a.active {
+  color: $brand-primary;
+}
+
+// for inline notices
+.update-notice {
+  @extend .btn-sm;
+  color: #fff;
+  background-color: $secondary-color;
+}
+
+.controls label {
+  @extend .pull-right;
+  float: left;
+  margin-right: 10px;
+  padding-right: 5px;
+}
+.rating-label {
+  text-align: right;
+}
+.rating-radio {
+
+}
+
 // collapsible candidates index panels
 .panel-group {
+  .panel-body {
+    h4 {
+      margin-left: 15px;
+      padding-bottom: 10px;
+      padding-top: 5px;
+    }
+  } 
   margin-bottom: 5px;
-  h4 {
-    margin-left: 15px;
-  }
   .panel-heading {
     // @include box-shadow;
     border-bottom: 1px solid;
   }
 }
+
+// interview panels
+.interview-li {
+  hr {
+    margin-top: 5px;
+    margin-bottom: 8px;
+
+  }
+  border: 1px solid black;
+  .percentage {
+    text-align: center;
+    margin-left: 0px;
+    padding-left: 0px;
+  }
+}
+
+// position panel
+.position-panel .btn-group {
+  padding-left: 15px;
+}
+
 
 .btn-group a:hover {
   text-decoration: none;
@@ -62,13 +113,6 @@ $border-radius-large: 1px;
   .panel-title {
     text-transform: uppercase;
   }
-  .edit-icon {
-    font-size: 1.2em;
-    padding-right: 25px;
-  }
-}
-.panel-header {
-
 }
 
 .modal {
@@ -99,8 +143,20 @@ $border-radius-large: 1px;
   }
 }
 
+//star rating on completed qeustions
+.stars {
+  padding-right: 10px;
+  text-align: right;
+  color: $brand-primary;
+}
+.panel-group h4 {
+  padding: 0px;
+  margin: 0px;
+}
+
+
 .info-panel {
-  // border-bottom:1px solid black; border-bottom:1px solid black;
+  margin-left: 15px;
 }
 
 .position-details {

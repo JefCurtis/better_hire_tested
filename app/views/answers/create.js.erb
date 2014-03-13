@@ -1,0 +1,7 @@
+$("#<%= dom_id(@question) %>").parents(".question-wrapper").fadeOut(800, function() {
+  $(this).next().slideUp('medium');
+  $(this).html("");
+  $(".completed").append("<%= j render 'interviews/answer', question: @question %>");
+  $("#<%= dom_id(@question) %>").collapse();
+});
+  

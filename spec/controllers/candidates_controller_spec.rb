@@ -14,7 +14,7 @@ describe CandidatesController do
     it "should assign @candidates" do
       candidate = create :candidate
       get :index
-    expect(assigns(:candidates)).to eq([candidate])
+      expect(assigns(:candidates)).to eq([candidate])
     end
   end
 

@@ -13,7 +13,6 @@ feature "candidate management" do
     visit positions_path
     click_on "Candidates"
     click_on "Add a candidate"
-
     fill_in "First name", with: "John"
     fill_in "Last name", with: "Doe"
     fill_in "Email", with: "johndoe@example.com"

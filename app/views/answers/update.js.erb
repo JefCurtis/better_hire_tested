@@ -1,0 +1,10 @@
+$("#<%= dom_id(@question) %>").collapse('hide');
+var $alert = $("<span class='update-notice'>Updated</span>");
+$alert.hide();
+$("#<%= dom_id(@question) %>").siblings('.panel-heading').find("h4").append($alert);
+$("#<%= dom_id(@question) %>").parent().find(".stars").html("<%= j render 'interviews/stars', question: @question %>")
+$alert.fadeIn(1200, function() {
+  $(this).fadeOut(1200, function() {
+    $(this).remove();
+  });
+})

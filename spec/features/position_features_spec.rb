@@ -37,7 +37,7 @@ feature :position do
   scenario "A user can view a position show page" do
     position
     visit positions_path
-    click_on "view questions"
+    first(:link, "view questions").click
     expect(page).to have_text("#{position.name}")
   end
 
@@ -58,8 +58,10 @@ feature :position do
 
   scenario "A user can add a candidate to a job position successfully", js: true do
     candidate = create :candidate
-    visit position_path(position)
-    find(".btn-primary").click
+    position = create :position
+    visit positions_path
+    click_on position.name
+    find(".assign").click
     check "Bob Smith"
     click_on "Update Position"
     visit candidates_path

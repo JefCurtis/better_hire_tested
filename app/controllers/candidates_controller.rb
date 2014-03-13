@@ -32,7 +32,7 @@ class CandidatesController < ApplicationController
 
   def update
     if @candidate.update_attributes candidate_params
-      redirect_to @candidate, message: "Your candidate has been updated"
+      redirect_to candidates_path, message: "Your candidate has been updated"
     else
       flash.now[:alert] = "There was a problem updating your candidate"
       render :edit
@@ -43,7 +43,7 @@ class CandidatesController < ApplicationController
   private
 
     def candidate_params
-      params.require(:candidate).permit(:first_name, :last_name, :email, :address, :phone, :note, :position_id, :avatar)
+      params.require(:candidate).permit(:first_name, :last_name, :email, :address, :phone, :notes, :position_id, :avatar)
     end
 
     def find_candidate
