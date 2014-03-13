@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140307015526) do
+ActiveRecord::Schema.define(version: 20140312234827) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,12 +19,13 @@ ActiveRecord::Schema.define(version: 20140307015526) do
   create_table "answers", force: true do |t|
     t.string   "title"
     t.integer  "question_id"
-    t.integer  "candidate_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "interview_id"
+    t.integer  "rating"
   end
 
-  add_index "answers", ["candidate_id"], name: "index_answers_on_candidate_id", using: :btree
+  add_index "answers", ["interview_id"], name: "index_answers_on_interview_id", using: :btree
   add_index "answers", ["question_id"], name: "index_answers_on_question_id", using: :btree
 
   create_table "candidates", force: true do |t|
@@ -44,6 +45,16 @@ ActiveRecord::Schema.define(version: 20140307015526) do
   end
 
   add_index "candidates", ["position_id"], name: "index_candidates_on_position_id", using: :btree
+
+  create_table "interviews", force: true do |t|
+    t.integer  "candidate_id"
+    t.integer  "position_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "interviews", ["candidate_id"], name: "index_interviews_on_candidate_id", using: :btree
+  add_index "interviews", ["position_id"], name: "index_interviews_on_position_id", using: :btree
 
   create_table "positions", force: true do |t|
     t.string   "name"

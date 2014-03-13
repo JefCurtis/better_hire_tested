@@ -1,0 +1,41 @@
+.spacer50
+.container
+  %h2= "Interview for #{@interview.candidate.formatted_name}"
+  %p
+    = "Job Position: #{@interview.position.name}"
+    = link_to "edit", edit_position_path(@interview.position)
+  -if @interview.interview_progress == 100
+    .well.well-sm
+      -if @interview.candidate.notes?
+        %h4 
+          Comments: 
+          %span 
+            %i.glyphicon.glyphicon-comment
+        .well.well-sm
+          = @interview.candidate.notes
+      -else
+        %p= link_to "<i class='glyphicon glyphicon-comment'></i> Add a comment", edit_candidate_path(@interview.candidate)
+    .well.well-sm
+      %h4
+        Overall rating: 
+        - @interview.interview_score.try(:floor).try(:times) do
+          %span= icon('star')
+        - if @interview.interview_score > @interview.interview_score.floor && @interview.interview_score < @interview.interview_score.ceil
+          %span= icon("star-half-o") 
+
+  .row
+    - if @interview.interview_progress != 100
+      .col-xs-12
+        %h4 Questions:
+        .list-group.incompleted
+          - @questions_incomplete.each do |question|
+            = render 'answer', question: question
+  .row
+    .col-xs-12
+      %h4 Completed Questions:
+      .list-group.completed
+        - @questions_complete.each do |question|
+          = render "answer", question: question, collapsed: true
+  .row
+    .col-xs-12
+      = link_to "All interviews", interviews_path, class: "btn btn-primary"

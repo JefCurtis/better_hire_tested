@@ -3,7 +3,7 @@
 FactoryGirl.define do
   factory :answer do
     title "Blue"
-    question nil
-    candidate nil
+    association :interview, factory: :interview
+    association :question, factory: :question
   end
 end

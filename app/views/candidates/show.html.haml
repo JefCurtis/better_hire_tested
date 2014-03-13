@@ -6,8 +6,9 @@
         = image_tag @candidate.avatar.url(:thumb), class: "image-wrapper"
         %h3.with-border
           = "#{@candidate.first_name} #{@candidate.last_name}"
-        .info-panel.clear-fix
-          = "<h4><i class='glyphicon glyphicon-bookmark'></i> #{@candidate.position.name}</h4>".html_safe if !@candidate.position.nil?
+        - @candidate.positions.each do |position|
+          .info-panel.clear-fix
+            = "<h4><i class='glyphicon glyphicon-bookmark'></i> #{position}</h4>".html_safe unless position.nil?
         .info-panel.clear-fix
           = "<h4><i class='glyphicon glyphicon-envelope'></i> #{@candidate.email}</h4>".html_safe 
         .info-panel.clear-fix

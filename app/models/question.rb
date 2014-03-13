@@ -4,4 +4,8 @@ class Question < ActiveRecord::Base
   belongs_to :position
   has_many :answers, dependent: :destroy
 
+  def answer_for_interview(interview)
+    answers.where(interview_id: interview).first
+  end
+
 end

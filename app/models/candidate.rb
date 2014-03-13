@@ -1,9 +1,12 @@
 class Candidate < ActiveRecord::Base
   validates :first_name, :last_name, :email, :phone, :address, presence: :true
   validates :email, uniqueness: :true
-  belongs_to :position
-  has_many :answers
-  
+  # belongs_to :position
+  # has_many :answers
+  has_many :interviews, dependent: :destroy
+  has_many :positions, through: :interviews
+  has_many :answers, through: :interviews
+
   has_attached_file :avatar, 
                     styles: { large: "800X800>", medium: "300x300>", thumb: "150x150>" }, 
                     default_url: ActionController::Base.helpers.asset_path('missing_avatar.png')

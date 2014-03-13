@@ -21,9 +21,13 @@ gem 'coffee-rails', '~> 4.0.0'
 
 gem 'faker'
 
+gem 'font-awesome-sass', "~> 4.0.3.1"
+
 gem "paperclip", "~> 4.1"
 
 gem 'active_link_to'
+
+gem "rails-erd", "~> 1.1.0"
 
 group :development do  
   gem "better_errors"

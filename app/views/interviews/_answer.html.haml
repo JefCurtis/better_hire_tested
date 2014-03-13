@@ -1,0 +1,27 @@
+#accordion.panel-group.question-wrapper
+  .panel.panel-default
+    .panel-heading
+      .row
+        .col-xs-9
+          %h4.panel-title.with-border
+            %a{"data-parent" => "#accordion", "data-toggle" => "collapse", href: "##{dom_id(question)}", class: "#{'collapsed' if defined? collapsed}"}
+              = question.title 
+        .col-xs-3.stars
+          = render 'interviews/stars', question: question
+    .panel-collapse.collapse.in{id:dom_id(question), style: "#{'height: 0px;' if defined? collapsed}"}
+      .panel-body
+        - answer = question.answers.where(interview_id: @interview.id).first || question.answers.new
+        = semantic_form_for [question, answer], remote: true,  html: {class: "form-horizontal"} do |f|
+          = f.semantic_errors :answer
+          = f.input :interview_id, as: :hidden, input_html: {value: @interview.id}
+          = f.input :title, as: :text, label: false, input_html: { class: "form-control", rows: 5 }
+          .spacer25
+          .well.well-sm
+            .row
+              .col-xs-2.rating-label
+                = f.label :rating, "Rating:", class: "radio-inline"
+              .col-xs-10 
+                = f.input :rating, :as => :radio, label: false, collection: (1..5), :input_html => { class: "rating" }
+
+          %br
+          = f.action :submit, button_html: { class: "form-control btn btn-primary", data: { disable_with: "saving..." } }

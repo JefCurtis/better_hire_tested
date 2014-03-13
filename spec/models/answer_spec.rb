@@ -6,7 +6,7 @@ describe "Answer" do
     build :answer
   end
   let(:question) { create :question }
-  let(:candidate) { create :candidate }
+  let(:interview) { create :interview }
 
   it "should exist" do
     expect(Answer).to be
@@ -18,7 +18,7 @@ describe "Answer" do
   end
 
   it "is valid it has a question_id" do
-    answer = create :answer, question: question, candidate: candidate 
+    answer = create :answer, question: question, interview: interview
     expect(answer).to be_valid
   end
 

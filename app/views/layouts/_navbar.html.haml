@@ -10,7 +10,7 @@
     %ul.nav.navbar-nav
       %li=active_link_to "Candidates", candidates_path, class: "navbar-link-alt"
       %li=active_link_to "Job Templates" , positions_path, class: "navbar-link-alt"
-      %li=active_link_to "Interview" , interviews_candidates_path, class: "navbar-link-alt"
+      %li=active_link_to "Interviews", interviews_path, class: "navbar-link-alt"
     %ul.nav.navbar-nav.navbar-right
       %li=link_to "Hello #{current_user.name_display}", edit_user_registration_path , class: "navbar-link"
       %li=link_to "sign out", destroy_user_session_path, method: :delete, class: "navbar-link-alt sign-out"
